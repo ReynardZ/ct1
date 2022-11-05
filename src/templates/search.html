@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title  %}
+    Concert Tracker - Search
+{% endblock %}
+
+{% block nav_items %}
+    <li class="nav-item">
+        <a class="nav-link"
+           style="background: skyblue;color: black"
+           pointer-events:none>
+            {{ session['user'] }}
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+           href="/tickets"
+           style="background: skyblue;color: black;margin-left: 5px">
+            OverView
+        </a>
+    </li>
+    <li class="nav-item" style="margin-left: 5px">
+        <a href="/sign_out"
+           class="nav-link active"
+           style="background: #CCC;color: red">
+            Sign Out
+        </a>
+    </li>
+{% endblock %}
+
+{% block body_content %}
+    <div class="row">
+        <div class="col-10">
+            <div class="card">
+                <div class="card-header">
+                    <form action="/search" method="post">
+                        <div class="input-group flex-nowrap" style="margin-top: 5px">
+                            <span class="input-group-text" id="label-concert" style="width: 150px">Concert Name</span>
+                            <input type="text" class="form-control" name="concert" placeholder="concert" aria-label="concert" aria-describedby="label-concert">
+                        </div>
+                        <div class="input-group flex-nowrap" style="margin-top: 5px">
+                            <span class="input-group-text" id="label-artist" style="width: 150px">Artist Name</span>
+                            <input type="text" class="form-control" name="artist" placeholder="artist" aria-label="artist" aria-describedby="label-artist">
+                        </div>
+                        <div class="input-group flex-nowrap" style="margin-top: 5px">
+                            <span class="input-group-text" id="label-venue" style="width: 150px">Venue Name</span>
+                            <input type="text" class="form-control" name="venue" placeholder="venue" aria-label="venue" aria-describedby="label-venue">
+                        </div>
+                        <div class="input-group mb-3" style="margin-top: 5px">
+                            <span class="input-group-text">SGD $</span>
+                            <input type="text" class="form-control" placeholder="min" style="width: 50px" name="min">
+                            <span class="input-group-text">.00</span>
+                            <span class="input-group-text"> - </span>
+                            <input type="text" class="form-control" placeholder="max" style="width: 50px" name="max">
+                            <span class="input-group-text">.00</span>
+                            <span class="input-group-text"> Date </span>
+                            <input type="text" class="form-control" placeholder="MM" name="month">
+                            <input type="text" class="form-control" placeholder="DD" name="day">
+                            <input type="text" class="form-control" placeholder="YYYY" name="year">
+                            <button class="btn btn-outline-secondary"
+                                    style="width: 150px;text-align: center"
+                                    id="button-addon1">
+                                Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body">
+                    {% for msg in get_flashed_messages() %}
+                        <h6>{{ msg }}</h6>
+                    {% endfor %}
+                    {% for i in results%}
+                        <div class="card" style="margin-top:5px">
+                            <div class="card-header">
+                                Concert Name: {{ i.concert_name }}
+                            </div>
+                            <div class="card-body">
+                                <p>Artist Name: {{ i.artist_name }}</p>
+                                <p>Venue Name: {{ i.venue_name }}</p>
+                                <p>Tickets price:{{ i.ticket_price }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

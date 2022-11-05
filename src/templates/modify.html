@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title  %}
+    Concert Tracker - Modify
+{% endblock %}
+
+{% block nav_items %}
+    <li class="nav-item">
+        <a class="nav-link"
+           style="background: skyblue;color: black"
+           pointer-events:none>
+            {{ session['user'] }}
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+           href="/tickets"
+           style="background: skyblue;color: black;margin-left: 5px">
+            OverView
+        </a>
+    </li>
+    <li class="nav-item" style="margin-left: 5px">
+        <a href="/sign_out"
+           class="nav-link active"
+           style="background: #CCC;color: red">
+            Sign Out
+        </a>
+    </li>
+{% endblock %}
+
+{% block body_content %}
+<div class="row">
+    <div class="col-10">
+        <div class="card">
+            <div class="card-header">
+                <h3>Modify Concert Information</h3>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Concert ID is automatically generated. Please do <b>NOT</b> change it.</h5>
+                <form action="/update" method="post">
+                    <div class="input-group flex-nowrap" style="margin-top: 5px">
+                        <span class="input-group-text" id="label-concert-id" style="width: 150px">Concert ID</span>
+                        <input type="text" class="form-control" name="id" value="{{ c_id }}" aria-label="concert-id" aria-describedby="label-concert-id">
+                    </div>
+                    <div class="input-group flex-nowrap" style="margin-top: 5px">
+                        <span class="input-group-text" id="label-concert-name" style="width: 150px">Concert Name</span>
+                        <input type="text" class="form-control" name="name" placeholder="concert-name" aria-label="concert-name" aria-describedby="label-concert-name">
+                    </div>
+                    <div class="input-group flex-nowrap" style="margin-top: 5px">
+                        <span class="input-group-text" id="label-genre" style="width: 150px">Genre</span>
+                        <input type="text" class="form-control" name="genre" placeholder="genre" aria-label="genre" aria-describedby="label-genre">
+                    </div>
+                    <div class="input-group flex-nowrap" style="margin-top: 5px">
+                        <span class="input-group-text" id="label-artist" style="width: 150px">Artists Name</span>
+                        <input type="text" class="form-control" name="artist" placeholder="concert-artist" aria-label="concert-artist" aria-describedby="label-concert-artist">
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 5px;text-align: center">Update Information</button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

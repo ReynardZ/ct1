@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title  %}
+    Concert Tracker
+{% endblock %}
+
+{% block nav_items %}
+    <li class="nav-item">
+                <a
+                        id = "signInBarBtn"
+                        href="/sign_in"
+                        class="nav-link active"
+                        style="background: black"
+                >Sign In</a>
+            </li>
+    <li class="nav-item">
+                <a
+                        id = "signUpBarBtn"
+                        href="/sign_up"
+                        class="nav-link"
+                        style="color: black"
+                >Sign Up</a>
+{% endblock %}
+
+{% block body_content %}
+    <h1> Welcome!</h1>
+{% endblock %}

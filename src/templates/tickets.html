@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title  %}
+    Concert Tickets
+{% endblock %}
+
+{% block nav_items %}
+    <li class="nav-item">
+                <a class="nav-link"
+                   style="background: skyblue;color: black"
+                   pointer-events:none
+                >{{ session['user'] }}</a>
+    </li>
+    <li class="nav-item" style="margin-left: 5px">
+                <a href="/sign_out"
+                   class="nav-link active"
+                   style="background: #CCC;color: red"
+                >Sign Out</a>
+    </li>
+{% endblock %}
+
+{% block body_content %}
+    <div class="row">
+
+        <!-- function bar -->
+        <div class="col-2">
+            <a class="btn btn-primary"
+               href="/search"
+               style="width: 80%;text-align:
+               center;margin-top: 10px">
+                Search
+            </a>
+            <a class="btn btn-primary"
+               href="/data_add"
+               style="width: 80%;
+               text-align: center;
+               margin-top: 10px">
+                Add
+            </a>
+        </div>
+
+        <!-- main content -->
+        <div class="col-10">
+            <div class="accordion" id="accordion">
+            <!--Concert-->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="concert_accordion">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Concert
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+                        {% for instance in concerts %}
+                        <div class="card" style="margin-left: 10px;width: 90%;margin-top:5px" >
+                            <div class="card-header">{{ instance.concert_name }}</div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Genre: {{ instance.genre }}<br>
+                                    Artists: {{ instance.artist_name }}<br>
+                                </p>
+                                    <a type="button"
+                                       href="/modify/{{instance.concert_id}}/{{instance.concert_name}}/{{instance.genre}}/{{instance.artist_name}}"
+                                       class="btn btn-outline-primary">Modify</a>
+                                    <a type="button" href="/delete/{{instance.concert_id}}" class="btn btn-outline-primary">Delete</a>
+                                </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+            <!--Update Form-->
+        </div>
+    </div>
+
+
+{% endblock %}

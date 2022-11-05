@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title  %}
+    Register
+{% endblock %}
+
+{% block nav_items %}
+    <li class="nav-item">
+                <a
+                        id = "signInBarBtn"
+                        href="/sign_in"
+                        class="nav-link "
+                        style="color: black"
+                >Sign In</a>
+            </li>
+    <li class="nav-item">
+                <a
+                        id = "signUpBarBtn"
+                        href="/sign_up"
+                        class="nav-link active"
+                        style="background: black"
+                >Sign Up</a>
+            </li>
+    <li class="nav-item">
+                <a href="#" class="nav-link" style="color: black">Q&A</a>
+            </li>
+{% endblock %}
+
+{% block body_content %}
+     <div class="row" id="signUp">
+        <div class="col-10">
+
+            <h3>Sign UP</h3>
+
+            <form action="/sign_up" method="post">
+                <!--Email-->
+                <div class="row" style="margin-top: 50px;width: 100%">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="label-email" style="width: 150px">Email</span>
+                        <input type="email" class="form-control" name="email" placeholder="you@example.com" aria-label="email" aria-describedby="label_email">
+                    </div>
+                </div>
+
+                <!--Password-->
+                <div class="row" style="margin-top: 10px;width: 100%">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="label-password" style="width: 150px">Password</span>
+                        <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password" aria-describedby="label-nation">
+                    </div>
+                </div>
+
+                <!--Nationality-->
+                <div class="row" style="margin-top: 10px;width: 100%">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="label-nation" style="width: 150px">Area</span>
+                        <input type="text" name="area" class="form-control" placeholder="Area" aria-label="Area" aria-describedby="label-nation">
+                    </div>
+                </div>
+
+                <!--Age-->
+                <div class="row" style="margin-top: 10px;width: 100%">
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="label-age" style="width: 150px">Age</span>
+                        <input type="text" class="form-control" name="age" placeholder="Please Enter A Number" aria-label="age" aria-describedby="label-age">
+                    </div>
+                </div>
+
+                <!--Submit-->
+                <div class="row" style="margin-top: 10px;width: 100%">
+                    <button name="signup" class="btn btn-dark" style="margin-top: 20px">Sign Up</button>
+                </div>
+                <p>Already have an account <a href="/sign_in">sign in</a> here.</p>
+            </form>
+
+            {% for message in get_flashed_messages() %}
+                <div class="card" style="margin-top: 15px">
+                    <div class="card-body" style="color: red">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
