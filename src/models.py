@@ -52,10 +52,7 @@ class Models:
                          "date varchar(128) references date_dimension(date) on update cascade on delete cascade deferrable initially deferred, "
                          "sales_quantity int , sales_revenue float, primary key (ticket_number,date, venue_id, concert_id)"
                          ");")
-        self.execute_sql("create table if not exists aggregated ("
-                         "sales_quantity int ,"
-                         "sales_revenue float "
-                         ");")
+
 
     def create_user(self, values):
         try:
