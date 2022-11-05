@@ -86,7 +86,7 @@ class Models:
 
     def advanced_search(self, statement):
         with self.engine.connect() as connection:
-            result = connection.execute(text(statement), parameters)
+            result = connection.execute(text(statement))
         return len(result), result
 
     def delete_data(self, c_id):
