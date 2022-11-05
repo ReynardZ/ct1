@@ -45,7 +45,6 @@ def search_page():
     else:
         form = SearchForm(request.form)
         statement = format_sql(form)
-        flash(statement)
         num, results = models.advanced_search(statement)
         flash("There are total {} results found".format(num))
         return render_template('search.html', results=results)
