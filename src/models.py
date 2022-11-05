@@ -6,7 +6,7 @@ import os
 class Models:
     # checked
     def __init__(self):
-        SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL?sslmode=require')
+        SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
         self.engine = create_engine(os.environ.get(SQLALCHEMY_DATABASE_URI))
 
     def execute_sql(self, statement, parameters={}):
