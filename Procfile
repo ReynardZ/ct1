@@ -1,1 +1,1 @@
-web: sh deploy.sh
+web: gunicorn app:app
