@@ -1,8 +1,8 @@
 import os
 from flask import Flask
-from apps.main import main
-from apps.users import auth
-from apps.tickets_opp import to
+from .apps.main import main
+from .apps.users import auth
+from .apps.tickets_opp import to
 
 
 app = Flask(__name__)
