@@ -6,11 +6,8 @@ import os
 class Models:
     # checked
     def __init__(self):
-        self.engine = create_engine(os.environ.get(
-            'DATABASE_URL',
-            'postgres://sfgfsntzceuzfr:2308dd0efa4e1ef829c8ed17b481707285d8a0ee81a92a020cda7339c51a751a@ec2-35-170-21'
-            '-76.compute-1.amazonaws.com:5432/dek4ggasgftq1t')
-                                    )
+        SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL?sslmode=require').replace('postgres://', 'postgresql://')
+        self.engine = create_engine(os.environ.get(SQLALCHEMY_DATABASE_URI))
 
     def execute_sql(self, statement, parameters={}):
         with self.engine.connect() as connection:
