@@ -12,6 +12,7 @@ class Models:
     def execute_sql(self, statement, parameters={}):
         with self.engine.connect() as connection:
             out = connection.execute(text(statement), parameters)
+        connection.close()
         return out
 
     # checked
