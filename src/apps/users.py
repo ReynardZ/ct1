@@ -57,4 +57,4 @@ def sign_up():
 @auth.route('/sign_out', methods=['GET', 'POST'])
 def sign_out():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('main.index'))
