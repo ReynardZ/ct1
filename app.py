@@ -1,14 +1,8 @@
-from src import create_app
+from src import app, db_init
+from src.models import Models
 
-
-<<<<<<< HEAD
-=======
-def create_app():
+if __name__ == '__main--':
     models = Models()
     models.initialize()
-    init_database('src/data.sql', models)
-    return app
-
-
->>>>>>> 0d53d7fa27671234eb553b5c078e61ae222851e8
-application = create_app()
+    db_init.init_database('src/data.sql', models)
+    app.run()
