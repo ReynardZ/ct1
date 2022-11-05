@@ -7,6 +7,7 @@ from flask import (request,
 from src.forms import SearchForm, ConcertForm
 from src.apps.advanced_search import format_sql
 from src.models import Models
+import logging
 
 models = Models()
 to = Blueprint('tickets', __name__)
@@ -45,6 +46,7 @@ def search_page():
     else:
         form = SearchForm(request.form)
         statement = format_sql(form)
+        logging.info(statement)
         num, results = models.advanced_search(statement)
         flash("There are total {} results found".format(num))
         return render_template('search.html', results=results)
