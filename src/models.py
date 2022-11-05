@@ -85,7 +85,8 @@ class Models:
                          "(:id, :name, :genre, :artist)", value)
 
     def advanced_search(self, statement):
-        result = self.execute_sql(statement).mappings().all()
+        with self.engine.connect() as connection:
+            result = connection.execute(text(statement), parameters)
         return len(result), result
 
     def delete_data(self, c_id):
