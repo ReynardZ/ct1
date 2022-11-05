@@ -6,7 +6,7 @@ import os
 class Models:
     # checked
     def __init__(self):
-        SQLALCHEMY_DATABASE_URI = 'postgres://clrszdrdunindu:b288f70cd2caeeb05a4535803df42a30831de20ad32be2ca7da5fa4b98fdde49@ec2-44-199-22-207.compute-1.amazonaws.com:5432/d48rt1aso8gj3h'
+        SQLALCHEMY_DATABASE_URI = 'postgresql://clrszdrdunindu:b288f70cd2caeeb05a4535803df42a30831de20ad32be2ca7da5fa4b98fdde49@ec2-44-199-22-207.compute-1.amazonaws.com:5432/d48rt1aso8gj3h'
         self.engine = create_engine(SQLALCHEMY_DATABASE_URI)
 
     def execute_sql(self, statement, parameters={}):
